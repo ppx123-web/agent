@@ -1,6 +1,6 @@
 from ..agent import Agent
 from ..context import LLMMessage, Context
-from lambdai import AI
+from ..client import DeepSeek
 
 class ChatAgent(Agent):
     name: str = "chat"
@@ -14,6 +14,5 @@ class ChatAgent(Agent):
             task=task,
             context=str(msg),
         )
-        with AI:
-            res: str = AI.query(prompt)
-            return res
+        res = DeepSeek().ask(prompt)
+        return res
