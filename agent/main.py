@@ -1,5 +1,4 @@
 from dashboard import dashboard
-from work import Question
 from lambdai import deepseek_chat
 # 1. routing
 # 2.1 research question
@@ -22,7 +21,7 @@ from lambdai import deepseek_chat
 '''
 
 def query(question):
-    return Question("Question", 0).run(question)
+    pass
 
 if __name__ == "__main__":
     deepseek_chat.remove_logger()
