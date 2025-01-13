@@ -12,7 +12,7 @@ class TestPlanner(unittest.TestCase):
         code = CodeAgent()
         planner.add_agent(agent)
         planner.add_agent(code)
-        result = planner.run("What is XBox?")
+        result = planner.run("计算213123*564")
         dashboard.render_markdown(result)
 
 if __name__ == "__main__":

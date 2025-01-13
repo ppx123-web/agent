@@ -3,6 +3,7 @@ from agent.context import Context, LLMMessage
 from lambdai import AI
 
 class CodeAgent(Agent):
+    description = "Code Agent can write code and execute it and return the result."
     def __init__(self):
         super().__init__("code.j2")
 
