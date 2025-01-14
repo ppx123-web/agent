@@ -8,25 +8,8 @@ from .myagents.file import FileAgent
 from .myagents.chat import ChatAgent
 from .myagents.search import SearchAgent
 from .context import Context, LLMMessage
-# 1. routing
-# 2.1 research question
-# 2.2 programming question
-# 3. RAG Search: 爬虫Search & Cot Agent
-# 4. table data processing
-# 5. chat
-# 6. personlized extension: extend serveral single words to a clear problem according to the context: named pe
+from loguru import logger
 
-
-# dify
-#   API workflow & chat call
-
-# tool pool
-
-
-'''
-
-1. stage design
-'''
 
 def query(question, msg: Context):
     agent = Planner()
@@ -34,6 +17,7 @@ def query(question, msg: Context):
     agent.add_agent(CodeAgent())
     agent.add_agent(ClearAgent())
     agent.add_agent(ChatAgent())
+    agent.add_agent(FileAgent())
     return agent.run(question, msg)
 
 if __name__ == "__main__":
@@ -41,6 +25,14 @@ if __name__ == "__main__":
     deepseek_chat.log_file = "logs/main.log"
     deepseek_chat.log_level = "DEBUG"
     deepseek_chat.apply()
+
+    def log_filter(record):
+        return record["extra"].get("agent") is not None
+
+    logger.add(
+        "logs/agent.log", mode="w", 
+        filter=log_filter
+    )
 
     msg = Context()
 

@@ -57,12 +57,7 @@ class Dashboard:
 
     def show_spinner(self, message: str = "思考中...", indent: int = 0):
         """显示加载动画"""
-        return Progress(
-            TextColumn("[bold blue]" + "    " * indent),
-            SpinnerColumn(),
-            TextColumn("[bold blue]" + message),
-            transient=True
-        )
+        return Progress()
         
     def clear(self):
         """清空控制台"""

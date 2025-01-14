@@ -25,7 +25,7 @@ class Planner(Agent):
             task=task
         )
         with dashboard.show_spinner("Planner is thinking...") as progress:
-            progress.add_task("Thinking")
+            progress.add_task("PlannerThinking")
             with AI:
                 res: list[tuple[str, str]] = AI.query(prompt)
                 for agent, task in res:
