@@ -29,11 +29,9 @@ class Context:
         Returns:
             格式化的历史记录字符串
         """
-        return """
-        User means the message from the user.
-        Assistant means the message from the assistant or LLM.
-        Following is the messages:
-        """ + "\n".join([f"{msg.role}: {msg.content}" for msg in self.messages])
+        return "User means the message from the user.\n" + \
+            "Assistant means the message from the assistant or LLM.\n" + \
+            "Following is the messages:\n" + "\n".join([f"{msg.role}: {msg.content}" for msg in self.messages])
         
     def clear(self):
         """

@@ -5,3 +5,5 @@ tmp/
 .vscode/
 __pycache__/
 .env
+
+.pylintrc

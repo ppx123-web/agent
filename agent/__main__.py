@@ -6,7 +6,9 @@ from .myagents.code import CodeAgent
 from .myagents.clear import ClearAgent
 from .myagents.file import FileAgent
 from .myagents.chat import ChatAgent
+from .myagents.shell import ShellAgent
 from .myagents.search import SearchAgent
+from .myagents.workspace import WorkspaceAgent
 from .context import Context, LLMMessage
 from loguru import logger
 
@@ -18,6 +20,8 @@ def query(question, msg: Context):
     agent.add_agent(ClearAgent())
     agent.add_agent(ChatAgent())
     agent.add_agent(FileAgent())
+    agent.add_agent(ShellAgent())
+    agent.add_agent(WorkspaceAgent())
     return agent.run(question, msg)
 
 if __name__ == "__main__":

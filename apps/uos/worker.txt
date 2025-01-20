@@ -1,0 +1,1 @@
+你需要根据/Users/choi/work/uos/tests/test_template.py，完成/Users/choi/work/uos/tests/uos_runtime/test_worker.py，相关的python文件定义在/Users/choi/work/uos/uos/metadataserver/worker.py。这是你的测试对象。

@@ -24,18 +24,22 @@ class Planner(Agent):
             ],
             task=task
         )
-        with dashboard.show_spinner("Planner is thinking...") as progress:
-            progress.add_task("PlannerThinking")
+        with dashboard.show_single_step("Planner is thinking...") as progress:
+            progress.add_task("Planner Thinking")
             with AI:
                 res: list[tuple[str, str]] = AI.query(prompt)
                 for agent, task in res:
                     assert agent in [agent.__class__.__name__ for agent in self.agents]
+        dashboard.render_list([f"{agent}: {task}" for agent, task in res])
+
         for agent, task in res:
             agent_cls = agents_dict.get(agent)
             if agent_cls is None:
                 raise ValueError(f"找不到名为 {agent} 的代理")
             self.worker.queue.put((agent_cls, task, msg))
+
         self.worker.run()
+
         summary: str = DeepSeek().ask(
             f"""
             Summarize the answer of the task according to the context.

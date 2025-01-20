@@ -7,6 +7,7 @@ from rich.progress import Progress, SpinnerColumn, TextColumn, BarColumn, TimeRe
 from rich.live import Live
 from rich.layout import Layout
 import time
+import readline
 
 class Dashboard:
     def __init__(self):
@@ -54,11 +55,26 @@ class Dashboard:
     def render_success(self, message: str):
         """渲染成功信息"""
         self.console.print(f"[green]成功: {message}[/green]")
+    
+    def render_list(self, items: list, title: str = ""):
+        """渲染列表内容"""
+        if title:
+            self.console.print(f"[bold blue]{title}[/bold blue]")
+            
+        for i, item in enumerate(items, 1):
+            text = Text(f"{i}. {item}")
+            self.console.print(text)
 
-    def show_spinner(self, message: str = "思考中...", indent: int = 0):
+    def show_spinner(self, message: str = "思考中..."):
         """显示加载动画"""
         return Progress()
-        
+    
+    def show_single_step(self, message: str):
+        return Progress(
+            SpinnerColumn(),
+            TextColumn(f"{message}"),
+        )
+
     def clear(self):
         """清空控制台"""
         self.console.clear()
