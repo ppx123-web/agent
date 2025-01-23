@@ -1,1 +1,1 @@
-你的工作区是/Users/choi/work/uos，这是一个名为UOS的项目，你现在需要为这个项目写unittest，在工作区下的tests文件夹中，根据tests文件夹下的文件，参考test_template.py的doc string，完成tests/uos_runtime/test_worker.py,. 你需要去项目搜索对应的class 定义以及相关的代码。你的路径以及文件都需要在工作区中进行。所有的文件都应该以绝对路径访问。如果你需要使用相对路径，请先change dir到工作区，最后再切换回当前目录
+/Users/choi/work/uos是一个名为UOS的项目，你现在需要为这个项目写unittest，参考tests/test_template.py的doc string，完成tests/uos_runtime/test_worker.py

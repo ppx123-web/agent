@@ -17,7 +17,8 @@ class Dashboard:
         """渲染输入提示并获取用户输入"""
         text = Text(prompt, style="bold blue")
         self.console.print(text, end="")
-        return input()
+        result = input()
+        return result
         
     def render_text(self, content: str, style: str = None):
         """渲染普通文本"""
@@ -51,6 +52,18 @@ class Dashboard:
     def render_error(self, message: str):
         """渲染错误信息"""
         self.console.print(f"[red]错误: {message}[/red]")
+                    
+    def render_confirm(self, prompt: str = "Confirm[Y/N]:") -> bool:
+        """渲染确认提示并返回用户选择"""
+        self.console.print(f"[bold blue]{prompt}[/bold blue]", end=" ")
+        choice = input().strip().lower()
+        if not choice:  # 如果用户直接回车，返回True
+            return True
+        if choice in ['y', 'yes']:
+            return True
+        elif choice in ['n', 'no']:
+            return False
+        return False
         
     def render_success(self, message: str):
         """渲染成功信息"""
